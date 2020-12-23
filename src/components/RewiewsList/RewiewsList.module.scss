@@ -1,0 +1,32 @@
+.list{
+    max-width:1000px;
+}
+
+.listItem{
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.listItemHeader{
+    padding: 10px;
+    border-bottom: 1px solid #cccccc;
+    display: flex;
+    align-items: center;
+    div b{
+        font-size: 21px;
+    }
+    img{
+        height: 50px;
+        border-radius: 15px;
+    }
+}
+
+.avatarWrapper{
+    margin-right:10px
+}
+
+.listItemContent{
+    padding: 10px;
+    line-height: 1.5rem;
+}

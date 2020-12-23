@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import { Link, NavLink, Route, useParams, useRouteMatch } from 'react-router-dom';
 import {createFetchForFullInfo} from '../services/fetchAPI'
 import Cast from './Cast'
-import Reviews from './Rewiews'
+import Reviews from './Reviews'
+import MovieFullInfo from '../components/MovieFullInfo'
 
 export default function MovieDetailsPage(){
     const { movieId } = useParams();
@@ -11,13 +12,19 @@ export default function MovieDetailsPage(){
  
     useEffect(() => {
         createFetchForFullInfo(movieId).then(setMovieFullInfo)
-    }, []);
+    }, [movieId]);
+
+    const createGoBackPath = () => {
+        //после второго вебинара разобратся и сделать по человечески
+        const path = '/'
+        return path
+    }
 
     return(
         <>
-            <Link to='/'>Go back</Link>
+            <Link to={createGoBackPath}>Go back</Link>
             {movieFullInfo
-            ? <h1>{movieFullInfo.title || movieFullInfo.name || movieFullInfo.status_message}</h1>
+            ? <MovieFullInfo movieFullInfo={movieFullInfo}/>
             : null}
             <hr/ >
             <h3>Additional information</h3>
@@ -27,10 +34,16 @@ export default function MovieDetailsPage(){
             </ul>
             <div>
                 <Route path={`${path}/cast`}>
-                    <Cast />
+                    {movieFullInfo
+                        ?<Cast id={movieFullInfo.id}/>
+                        :null
+                    }
                 </Route>
                 <Route path={`${path}/reviews`}>
-                    <Reviews />
+                    {movieFullInfo
+                        ?<Reviews id={movieFullInfo.id}/>
+                        :null
+                    }
                 </Route>
             </div>
         </>
