@@ -1,22 +1,22 @@
-import { Route, Switch } from 'react-router-dom'
-import Container from './components/Container'
-import Header from './components/Header'
-import HomePage from './views/HomePage'
-import MovieDetailsPage from './views/MovieDetailsPage'
-import MoviesPage from './views/MoviesPage'
+import { Route, Switch } from 'react-router-dom';
+import Container from './components/Container';
+import Header from './components/Header';
+import HomePage from './views/HomePage';
+import MovieDetailsPage from './views/MovieDetailsPage';
+import MoviesPage from './views/MoviesPage';
 
 function App() {
   return (
     <Container>
       <Header />
       <Switch>
-        <Route exact path='/'>
+        <Route exact path="/">
           <HomePage />
         </Route>
-        <Route exact path='/movies'>
+        <Route exact path="/movies">
           <MoviesPage />
         </Route>
-        <Route path='/movies/:movieId'>
+        <Route path="/movies/:movieId">
           <MovieDetailsPage />
         </Route>
       </Switch>

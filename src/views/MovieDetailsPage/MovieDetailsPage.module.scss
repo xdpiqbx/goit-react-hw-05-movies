@@ -1,0 +1,40 @@
+.container {
+  position: relative;
+  border-top: 1px solid #cccccc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.addInfo {
+  border: 1px solid #cccccc;
+  background-color: #f8f8f8;
+  display: inline-block;
+  position: relative;
+  top: -1.4rem;
+  padding: 10px 20px;
+  border-radius: 4px;
+}
+
+.addInfoList {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.addInfoItemList {
+  &:not(:last-child) {
+    margin-right: 15px;
+  }
+}
+
+.addInfoItemListLink {
+  border: 1px solid #cccccc;
+  padding: 10px 20px;
+  display: block;
+}
+
+.active {
+  background: #e2e2d9;
+}
