@@ -34,7 +34,7 @@ export default function MoviesPage() {
   return (
     <>
       <SearchForm onSubmitHandler={onSubmitHandler} />
-      <MovieCards moviesList={fetchedMovies} />
+      {fetchedMovies && <MovieCards moviesList={fetchedMovies.results} />}
     </>
   );
 }

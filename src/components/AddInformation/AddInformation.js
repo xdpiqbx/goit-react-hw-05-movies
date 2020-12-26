@@ -1,9 +1,14 @@
-import { NavLink, Route, useRouteMatch } from 'react-router-dom';
-
-import Cast from '../../views/Cast';
-import Reviews from '../../views/Reviews';
+import { lazy, Suspense } from 'react';
+import { NavLink, Route, Switch, useRouteMatch } from 'react-router-dom';
 
 import s from './AddInformation.module.scss';
+
+const Cast = lazy(() =>
+  import('../../views/Cast' /* webpackChunkName: "Cast" */),
+);
+const Reviews = lazy(() =>
+  import('../../views/Reviews' /* webpackChunkName: "Reviews" */),
+);
 
 export default function AddInformation({ movieFullInfo }) {
   const { url, path } = useRouteMatch();
@@ -11,6 +16,7 @@ export default function AddInformation({ movieFullInfo }) {
   return (
     <div className={s.container}>
       <h3 className={s.addInfo}>Additional information</h3>
+
       <ul className={s.addInfoList}>
         <li className={s.addInfoItemList}>
           <NavLink
@@ -33,12 +39,17 @@ export default function AddInformation({ movieFullInfo }) {
         </li>
         {/* /movies/:movieId/reviews */}
       </ul>
-      <Route path={`${path}/cast`}>
-        <Cast id={movieFullInfo.id} />
-      </Route>
-      <Route path={`${path}/reviews`}>
-        <Reviews id={movieFullInfo.id} />
-      </Route>
+
+      <Suspense fallback={<div>Loading...</div>}>
+        <Switch>
+          <Route path={`${path}/cast`}>
+            <Cast id={movieFullInfo.id} />
+          </Route>
+          <Route path={`${path}/reviews`}>
+            <Reviews id={movieFullInfo.id} />
+          </Route>
+        </Switch>
+      </Suspense>
     </div>
   );
 }

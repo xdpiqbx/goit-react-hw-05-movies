@@ -52,16 +52,17 @@ export default function MovieFullInfo(props) {
             <div className={s.title2}>{original_title}</div>
             <span className={s.title3}>{vote_average} vote average</span>
             <br />
-            <span className={s.title3}>{vote_average} vote average</span>
+            <span className={s.title3}>{vote_average * 10}% User score</span>
           </div>
         </div>
         <div className={s.description}>
-          <ul className={s.column1}>
-            {genres.map(({ name }, index) => (
-              <li key={id + index} className={s.tag}>
-                {name}
-              </li>
-            ))}
+          <ul className={s.genres}>
+            {genres &&
+              genres.map(({ name }, index) => (
+                <li key={id + index} className={s.tag}>
+                  {name}
+                </li>
+              ))}
           </ul>
           <div className={s.column2}>
             <p>{overview}</p>

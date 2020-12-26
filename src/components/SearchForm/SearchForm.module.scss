@@ -42,8 +42,8 @@
 .btn {
   align-items: center;
   color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
+  background-color: #e2e2d9;
+  color: #f33a21;
   display: flex;
   align-items: center;
   font-weight: 400;
@@ -59,7 +59,7 @@
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 
   &:hover {
-    background-color: #0557af;
+    background-color: #ccccb9;
   }
   svg {
     margin-right: 10px;

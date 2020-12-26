@@ -1,3 +1,5 @@
+@import 'styles/base.scss';
+
 .container {
   position: relative;
   border-top: 1px solid #cccccc;
@@ -11,7 +13,8 @@
   background-color: #f8f8f8;
   display: inline-block;
   position: relative;
-  top: -1.4rem;
+  font-weight: 500;
+  top: -2.5rem;
   padding: 10px 20px;
   border-radius: 4px;
 }
@@ -20,6 +23,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin-top: -2.5rem;
   margin-bottom: 15px;
 }
 
@@ -31,6 +35,8 @@
 
 .addInfoItemListLink {
   border: 1px solid #cccccc;
+  color: rgba(0, 0, 0, 1);
+  text-decoration: none;
   padding: 10px 20px;
   display: block;
 }

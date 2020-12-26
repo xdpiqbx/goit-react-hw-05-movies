@@ -1,37 +1,45 @@
-.list{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+@import 'styles/base.scss';
+
+.list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
-.listItem{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    max-width: 132px;
-    height: 260px;
-    border-radius: 4px;
-    margin: 2px;
-    overflow: hidden;
-    background: radial-gradient(circle, rgba(232,232,232,1) 0%, rgba(196,196,196,1) 50%, rgba(136,136,136,1) 100%);
+.listItem {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-width: 132px;
+  height: 260px;
+  border-radius: 4px;
+  margin: 2px;
+  overflow: hidden;
+  background: radial-gradient(
+    circle,
+    rgba(232, 232, 232, 1) 0%,
+    rgba(196, 196, 196, 1) 50%,
+    rgba(136, 136, 136, 1) 100%
+  );
 }
 
-.image{
-    width: auto;
-    align-self: center;
+.image {
+  width: auto;
+  align-self: center;
 }
 
-.nameCharacterWrapper{
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    left:0;
-    bottom: 10px;
-    width: 100%
+.nameCharacterWrapper {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  left: 0;
+  bottom: 10px;
+  width: 100%;
 }
 
-.name, .character{
-    text-align: center;
+.name,
+.character {
+  text-align: center;
 }

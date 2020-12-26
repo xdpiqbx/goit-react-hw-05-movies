@@ -1,18 +1,19 @@
-.nav{
+@import 'styles/base.scss';
+
+.nav {
   margin-left: 20px;
 }
 
 .link {
-    display: inline-block;
-    text-decoration: none;
-    padding: 12px;
-    font-weight: 500;
-    color: #2a363b;
-    font-size: 18px;
-  }
-  
-  .activeLink {
-    composes: link;
-    color: #f33a21;
-  }
-  
+  display: inline-block;
+  text-decoration: none;
+  padding: 12px;
+  font-weight: 500;
+  color: #2a363b;
+  font-size: 18px;
+}
+
+.activeLink {
+  composes: link;
+  color: #f33a21;
+}

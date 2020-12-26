@@ -1,15 +1,13 @@
 import { useEffect, useState } from 'react';
 import MovieCards from '../components/MovieCards';
-import {createFetchForTrending} from '../services/fetchAPI'
+import { createFetchForTrending } from '../services/fetchAPI';
 
-export default function HomePage(){
-    const [moviesList, setMoviesList] = useState(null);
- 
-    useEffect(() => {
-        createFetchForTrending().then(setMoviesList);
-    }, []);
+export default function HomePage() {
+  const [moviesList, setMoviesList] = useState(null);
 
-    return(
-        <MovieCards moviesList={moviesList}/>
-    )
+  useEffect(() => {
+    createFetchForTrending().then(setMoviesList);
+  }, []);
+
+  return <>{moviesList && <MovieCards moviesList={moviesList.results} />}</>;
 }

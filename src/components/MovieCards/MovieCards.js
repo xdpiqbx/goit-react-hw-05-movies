@@ -14,7 +14,7 @@ const MovieCards = ({ moviesList }) => {
   return (
     <ul className={s.cardsList}>
       {moviesList &&
-        moviesList.results.map(movie => (
+        moviesList.map(movie => (
           <li key={movie.id} className={s.cardsListItem}>
             <NavLink
               to={{
@@ -23,7 +23,7 @@ const MovieCards = ({ moviesList }) => {
                   pathname: history.location.pathname,
                   search: history.location.search,
                   query: new URLSearchParams(history.location.search).get(
-                    'query',
+                    'page',
                   ),
                 },
               }}
