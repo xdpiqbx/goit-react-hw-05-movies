@@ -1,19 +1,21 @@
 import { NavLink, useHistory } from 'react-router-dom';
 import s from './MovieCards.module.scss';
+import noCoverImage from '../../images/noCoverImage.jpg';
 
 const MovieCards = ({ moviesList }) => {
-  const setBackgroundImg = imgUrl => {
-    return {
-      backgroundImage: `var(--card-img-hovered-overlay), url(${imgUrl})`,
-    };
+  const imgBase = `https://image.tmdb.org/t/p/w200`;
+
+  const createDefaultImagePath = path => {
+    return path ? imgBase + path : noCoverImage;
   };
+
   const history = useHistory();
 
   return (
-    <ul className={s.cardContainer}>
+    <ul className={s.cardsList}>
       {moviesList &&
         moviesList.results.map(movie => (
-          <li key={movie.id}>
+          <li key={movie.id} className={s.cardsListItem}>
             <NavLink
               to={{
                 pathname: `/movies/${movie.id}`,
@@ -27,15 +29,13 @@ const MovieCards = ({ moviesList }) => {
               }}
             >
               <div className={s.card}>
-                <div className={s.cardImg}></div>
-                <div
-                  className={s.cardImgHovered}
-                  style={setBackgroundImg(
-                    `https://image.tmdb.org/t/p/w780/${movie.poster_path}`,
-                  )}
-                ></div>
+                <img
+                  className={s.image}
+                  src={createDefaultImagePath(movie.poster_path)}
+                  alt={movie.title || movie.name}
+                />
                 <div className={s.cardInfo}>
-                  <h1 className={s.cardTitle}>{movie.title || movie.name}</h1>
+                  <h2 className={s.cardTitle}>{movie.title || movie.name}</h2>
                 </div>
               </div>
             </NavLink>

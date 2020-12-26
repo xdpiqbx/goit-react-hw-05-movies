@@ -19,6 +19,9 @@ function App() {
         <Route path="/movies/:movieId">
           <MovieDetailsPage />
         </Route>
+        <Route>
+          <HomePage />
+        </Route>
       </Switch>
       {/*
         '/' - <HomePage>, домашняя страница со списком популярных кинофильмов.

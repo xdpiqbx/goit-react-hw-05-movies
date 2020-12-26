@@ -1,5 +1,14 @@
 import s from './MovieFullInfo.module.scss';
+
+import noCoverImage from '../../images/noCoverImage.jpg';
+import noBG from '../../images/noBG.jpg';
+
 export default function MovieFullInfo(props) {
+  const createDefaultImagePath = (path, defImg, size) => {
+    const imgBase = `https://image.tmdb.org/t/p/w${size}`;
+    return path ? imgBase + path : defImg;
+  };
+
   const {
     id,
     backdrop_path,
@@ -20,7 +29,7 @@ export default function MovieFullInfo(props) {
     overflow: 'hidden',
     top: 0,
     left: 0,
-    background: `url(https://image.tmdb.org/t/p/w500/${backdrop_path})`,
+    background: `url(${createDefaultImagePath(backdrop_path, noBG, 500)})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: '100%',
     zIndex: -1,
@@ -32,7 +41,7 @@ export default function MovieFullInfo(props) {
       <div className={s.container}>
         <img
           height="300"
-          src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+          src={createDefaultImagePath(poster_path, noCoverImage, 200)}
           alt="cover"
           className={s.cover}
         />

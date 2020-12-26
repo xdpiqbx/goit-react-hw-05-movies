@@ -2,50 +2,38 @@ import { useEffect, useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import MovieCards from '../components/MovieCards';
 import { createFetchSearchByKeyword } from '../services/fetchAPI';
+import SearchForm from '../components/SearchForm';
 
 export default function MoviesPage() {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [fetchedMovies, setFetchedMovies] = useState('');
-
   const history = useHistory();
   const location = useLocation();
 
-  useEffect(() => {
-    if (history.location.state) {
-      MoviesHandler(history.location.state.query);
-    }
-  }, [history.location.state]);
+  const [fetchedMovies, setFetchedMovies] = useState('');
+  const [startQuery, setStartQuery] = useState(
+    new URLSearchParams(history.location.search).get('query'),
+  );
 
-  const onChange = event => {
-    setSearchQuery(event.currentTarget.value);
-  };
+  useEffect(() => {
+    if (startQuery) {
+      MoviesHandler(startQuery);
+    }
+  }, [startQuery]);
 
   const MoviesHandler = query => {
     createFetchSearchByKeyword(query).then(setFetchedMovies);
   };
 
-  const onSubmit = event => {
-    event.preventDefault();
-    if (!searchQuery) {
-      return;
-    }
-    setSearchQuery(searchQuery);
-    MoviesHandler(searchQuery);
+  const onSubmitHandler = query => {
+    setStartQuery(query);
     history.push({
       ...location,
-      search: `query=${searchQuery}`,
+      search: `query=${query}`,
     });
-    setSearchQuery('');
   };
 
   return (
     <>
-      <form onSubmit={onSubmit}>
-        <label>
-          <input type="text" value={searchQuery} onChange={onChange} />
-        </label>
-        <button type="submit">Search</button>
-      </form>
+      <SearchForm onSubmitHandler={onSubmitHandler} />
       <MovieCards moviesList={fetchedMovies} />
     </>
   );

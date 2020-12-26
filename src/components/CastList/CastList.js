@@ -2,6 +2,7 @@ import s from './CastList.module.scss';
 import defaultMan from '../../images/defaultMan.jpg';
 import defaultWoman from '../../images/defaultWoman.jpg';
 import defaultYoda from '../../images/yoda.jpg';
+import { useEffect } from 'react';
 
 export default function CastList({ cast }) {
   const imgBase = `https://image.tmdb.org/t/p/w200`;
@@ -25,10 +26,15 @@ export default function CastList({ cast }) {
     return imagePath;
   };
 
+  useEffect(() => {
+    window.scrollTo({
+      top: document.documentElement.scrollHeight,
+      behavior: 'smooth',
+    });
+  });
+
   return (
     <>
-      {/* <img src={defaultMan} alt='test'/>
-        <img src={defaultWoman} alt='test'/> */}
       <ul className={s.list}>
         {cast.map(({ id, name, character, profile_path, gender }) => {
           return (

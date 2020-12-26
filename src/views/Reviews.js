@@ -6,6 +6,13 @@ export default function Rewiews({ id }) {
   const [rewiewsList, setRewiewsList] = useState(null);
 
   useEffect(() => {
+    window.scrollTo({
+      top: document.documentElement.scrollHeight,
+      behavior: 'smooth',
+    });
+  });
+
+  useEffect(() => {
     createFetchForReviews(id).then(setRewiewsList);
   }, [id]);
 
