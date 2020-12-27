@@ -33,7 +33,7 @@ export default function CastList({ cast }) {
       top: document.documentElement.scrollHeight,
       behavior: 'smooth',
     });
-  });
+  }, []);
 
   return (
     <>

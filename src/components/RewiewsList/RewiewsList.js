@@ -1,8 +1,16 @@
 import PropTypes from 'prop-types';
+import { useEffect } from 'react';
 
 import s from './RewiewsList.module.scss';
 
 export default function RewiewsList({ rewiewsList }) {
+  useEffect(() => {
+    window.scrollTo({
+      top: document.documentElement.scrollHeight,
+      behavior: 'smooth',
+    });
+  }, []);
+
   const createAvatarPath = url => {
     const imgBase = `https://image.tmdb.org/t/p/w200`;
     if (url && url.includes('https://')) {
@@ -23,7 +31,7 @@ export default function RewiewsList({ rewiewsList }) {
                   <div className={s.avatarWrapper}>
                     <img
                       src={createAvatarPath(author_details.avatar_path)}
-                      alt=""
+                      alt={author}
                     />
                   </div>
                 )}

@@ -34,6 +34,8 @@ export default function MovieDetailsPage() {
     history.push(createBackPath);
   };
 
+  // console.log(createBackPath);
+
   return (
     <>
       <ButtonGoBack onClick={createGoBack} />

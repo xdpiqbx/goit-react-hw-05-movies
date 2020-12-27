@@ -41,7 +41,6 @@ export default function MovieFullInfo(props) {
             <div className={s.title1}>{title || name}</div>
             <div className={s.title2}>{original_title}</div>
             <span className={s.title3}>{vote_average} vote average</span>
-            <br />
             <span className={s.title3}>{vote_average * 10}% User score</span>
           </div>
         </div>
@@ -54,7 +53,7 @@ export default function MovieFullInfo(props) {
                 </li>
               ))}
           </ul>
-          <div className={s.column2}>
+          <div className={s.overview}>
             <p>{overview}</p>
           </div>
         </div>

@@ -5,7 +5,7 @@ import s from './ButtonGoBack.module.scss';
 export default function ButtonGoBack({ onClick }) {
   return (
     <button className={s.back} type="button" onClick={onClick}>
-      <ImArrowLeft2 /> Go back
+      <ImArrowLeft2 />
     </button>
   );
 }

@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import Loader from 'react-loader-spinner';
 
 import { lazy, Suspense } from 'react';
 import { NavLink, Route, Switch, useRouteMatch } from 'react-router-dom';
@@ -42,7 +43,16 @@ export default function AddInformation({ movieId }) {
         {/* /movies/:movieId/reviews */}
       </ul>
 
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense
+        fallback={
+          <Loader
+            type="RevolvingDot"
+            color="#00BFFF"
+            height={100}
+            width={100}
+          />
+        }
+      >
         <Switch>
           <Route path={`${path}/cast`}>
             <Cast id={movieId} />

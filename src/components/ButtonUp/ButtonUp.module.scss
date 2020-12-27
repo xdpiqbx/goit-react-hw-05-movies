@@ -1,7 +1,7 @@
 @import 'styles/base.scss';
-.back {
+.up {
   position: fixed;
-  left: 20px;
+  right: 20px;
   bottom: 20px;
   align-items: center;
   background-color: #e2e2d9;
@@ -23,8 +23,7 @@
     background-color: #ccccb9;
   }
   @media screen and (min-width: 768px) {
-    position: unset;
-    margin-bottom: 15px;
-    margin-left: 30px;
+    right: 40px;
+    bottom: 40px;
   }
 }

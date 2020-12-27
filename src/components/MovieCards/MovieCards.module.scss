@@ -3,11 +3,17 @@
 .cardsList {
   margin-bottom: 25px;
   display: grid;
-  grid-template-columns: repeat(5, 200px);
+  grid-template-columns: repeat(1, 200px);
   grid-gap: 25px;
   justify-content: center;
   grid-auto-flow: row;
   justify-items: center;
+  @media screen and (min-width: 768px) {
+    grid-template-columns: repeat(4, 160px);
+  }
+  @media screen and (min-width: 1280px) {
+    grid-template-columns: repeat(5, 200px);
+  }
 }
 
 .cardsListItem {
@@ -20,6 +26,14 @@
   &:hover {
     transform: rotate(1deg) scale(1.1);
     box-shadow: 10px 10px 31px 3px rgba(0, 0, 0, 0.6);
+  }
+  @media screen and (min-width: 768px) {
+    width: 160px;
+    height: 240px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 200px;
+    height: 300px;
   }
 }
 
