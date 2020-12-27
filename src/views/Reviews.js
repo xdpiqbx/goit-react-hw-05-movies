@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import { useEffect, useState } from 'react';
 import { createFetchForReviews } from '../services/fetchAPI';
 import RewiewsList from '../components/RewiewsList';
@@ -18,3 +20,7 @@ export default function Rewiews({ id }) {
 
   return rewiewsList && <RewiewsList rewiewsList={rewiewsList} />;
 }
+
+Rewiews.propTypes = {
+  id: PropTypes.number,
+};

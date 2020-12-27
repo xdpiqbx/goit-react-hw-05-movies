@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import { useState } from 'react';
 import { ImSearch } from 'react-icons/im';
 
@@ -39,3 +41,7 @@ export default function SearchForm({ onSubmitHandler }) {
     </div>
   );
 }
+
+SearchForm.propTypes = {
+  onSubmitHandler: PropTypes.func,
+};

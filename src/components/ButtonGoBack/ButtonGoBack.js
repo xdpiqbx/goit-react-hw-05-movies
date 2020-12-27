@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import { ImArrowLeft2 } from 'react-icons/im';
 import s from './ButtonGoBack.module.scss';
 export default function ButtonGoBack({ onClick }) {
@@ -7,3 +9,7 @@ export default function ButtonGoBack({ onClick }) {
     </button>
   );
 }
+
+ButtonGoBack.propTypes = {
+  onClick: PropTypes.func,
+};

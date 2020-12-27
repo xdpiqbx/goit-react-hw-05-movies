@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import s from './MovieFullInfo.module.scss';
 
 import noCoverImage from '../../images/noCoverImage.jpg';
@@ -21,20 +23,8 @@ export default function MovieFullInfo(props) {
     vote_average,
   } = props.movieFullInfo;
 
-  const styleBefore = {
-    content: '',
-    width: '100%',
-    height: '100%',
-    position: 'absolute',
-    overflow: 'hidden',
-    top: 0,
-    left: 0,
-    background: `url(${createDefaultImagePath(backdrop_path, noBG, 500)})`,
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: '100%',
-    zIndex: -1,
-    transform: `skewY(-2.2deg)`,
-    transformOrigin: '0 0',
+  const bgImg = {
+    backgroundImage: `url(${createDefaultImagePath(backdrop_path, noBG, 500)})`,
   };
   return (
     <div className={s.movieCard}>
@@ -46,7 +36,7 @@ export default function MovieFullInfo(props) {
           className={s.cover}
         />
         <div className={s.hero}>
-          <div style={styleBefore}></div>
+          <div style={bgImg} className={s.bgImg}></div>
           <div className={s.details}>
             <div className={s.title1}>{title || name}</div>
             <div className={s.title2}>{original_title}</div>
@@ -72,3 +62,7 @@ export default function MovieFullInfo(props) {
     </div>
   );
 }
+
+MovieFullInfo.propTypes = {
+  movieFullInfo: PropTypes.object,
+};

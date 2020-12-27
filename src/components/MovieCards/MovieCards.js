@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import { NavLink, useHistory } from 'react-router-dom';
 import s from './MovieCards.module.scss';
 import noCoverImage from '../../images/noCoverImage.jpg';
@@ -46,3 +48,7 @@ const MovieCards = ({ moviesList }) => {
 };
 
 export default MovieCards;
+
+MovieCards.propTypes = {
+  MovieCards: PropTypes.arrayOf(PropTypes.object),
+};

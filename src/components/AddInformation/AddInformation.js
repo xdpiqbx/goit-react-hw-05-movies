@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import { lazy, Suspense } from 'react';
 import { NavLink, Route, Switch, useRouteMatch } from 'react-router-dom';
 
@@ -10,7 +12,7 @@ const Reviews = lazy(() =>
   import('../../views/Reviews' /* webpackChunkName: "Reviews" */),
 );
 
-export default function AddInformation({ movieFullInfo }) {
+export default function AddInformation({ movieId }) {
   const { url, path } = useRouteMatch();
 
   return (
@@ -43,13 +45,17 @@ export default function AddInformation({ movieFullInfo }) {
       <Suspense fallback={<div>Loading...</div>}>
         <Switch>
           <Route path={`${path}/cast`}>
-            <Cast id={movieFullInfo.id} />
+            <Cast id={movieId} />
           </Route>
           <Route path={`${path}/reviews`}>
-            <Reviews id={movieFullInfo.id} />
+            <Reviews id={movieId} />
           </Route>
         </Switch>
       </Suspense>
     </div>
   );
 }
+
+AddInformation.propTypes = {
+  movieId: PropTypes.number,
+};

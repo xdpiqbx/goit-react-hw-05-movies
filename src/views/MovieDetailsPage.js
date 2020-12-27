@@ -38,7 +38,7 @@ export default function MovieDetailsPage() {
     <>
       <ButtonGoBack onClick={createGoBack} />
       {movieFullInfo ? <MovieFullInfo movieFullInfo={movieFullInfo} /> : null}
-      {movieFullInfo ? <AddInformation movieFullInfo={movieFullInfo} /> : null}
+      {movieFullInfo ? <AddInformation movieId={movieFullInfo.id} /> : null}
     </>
   );
 }

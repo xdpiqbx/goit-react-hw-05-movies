@@ -1,4 +1,7 @@
+import PropTypes from 'prop-types';
+
 import s from './RewiewsList.module.scss';
+
 export default function RewiewsList({ rewiewsList }) {
   const createAvatarPath = url => {
     const imgBase = `https://image.tmdb.org/t/p/w200`;
@@ -37,3 +40,7 @@ export default function RewiewsList({ rewiewsList }) {
   }
   return <h2>We don't have any reviews for this movie</h2>;
 }
+
+RewiewsList.propTypes = {
+  rewiewsList: PropTypes.object,
+};

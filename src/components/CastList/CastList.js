@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import s from './CastList.module.scss';
 import defaultMan from '../../images/defaultMan.jpg';
 import defaultWoman from '../../images/defaultWoman.jpg';
@@ -60,3 +62,7 @@ export default function CastList({ cast }) {
     </>
   );
 }
+
+CastList.propTypes = {
+  cast: PropTypes.array,
+};
