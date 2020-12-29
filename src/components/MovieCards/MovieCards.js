@@ -1,17 +1,17 @@
 import PropTypes from 'prop-types';
 
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import s from './MovieCards.module.scss';
 import noCoverImage from '../../images/noCoverImage.jpg';
 
-const MovieCards = ({ moviesList }) => {
-  const imgBase = `https://image.tmdb.org/t/p/w200`;
+const imgBase = `https://image.tmdb.org/t/p/w200`;
 
-  const createDefaultImagePath = path => {
-    return path ? imgBase + path : noCoverImage;
-  };
+const createDefaultImagePath = path => {
+  return path ? imgBase + path : noCoverImage;
+};
 
-  const history = useHistory();
+const MovieCards = ({ moviesList, page }) => {
+  const location = useLocation();
 
   return (
     <ul className={s.cardsList}>
@@ -22,11 +22,9 @@ const MovieCards = ({ moviesList }) => {
               to={{
                 pathname: `/movies/${movie.id}`,
                 state: {
-                  pathname: history.location.pathname,
-                  search: history.location.search,
-                  query: new URLSearchParams(history.location.search).get(
-                    'page',
-                  ),
+                  from: {
+                    location,
+                  },
                 },
               }}
             >

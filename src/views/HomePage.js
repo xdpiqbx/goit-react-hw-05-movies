@@ -1,53 +1,42 @@
-import { useEffect, useState } from 'react';
-import ReactPaginate from 'react-paginate';
-import { useHistory, useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import MoviePagination from '../components/MoviePagination';
 
 import MovieCards from '../components/MovieCards';
 import { createFetchForTrending } from '../services/fetchAPI';
+import { useHistory, useLocation } from 'react-router-dom';
 
 export default function HomePage() {
-  const history = useHistory();
   const location = useLocation();
+  const history = useHistory();
 
   const [moviesList, setMoviesList] = useState(null);
-  const [page, setPage] = useState(
+  const [statePage, setPage] = useState(
     new URLSearchParams(history.location.search).get('page') || 1,
   );
 
   useEffect(() => {
-    createFetchForTrending(page).then(setMoviesList);
-    if (page === 1) {
-      history.push('/');
-      return;
-    }
+    createFetchForTrending(statePage).then(setMoviesList);
+    location.search = `page=${statePage}`;
     history.push({
       ...location,
-      search: `page=${page}`,
     });
+    // Просит history и location
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [page, history]);
+  }, [statePage, history]);
 
-  function onPageChange(data) {
-    setPage(Number(data.selected) + 1);
-  }
+  console.log('history', history);
+  console.log('location', location);
 
   return (
-    <>
-      {moviesList && <MovieCards moviesList={moviesList.results} />}
-      {moviesList && (
-        <ReactPaginate
-          pageCount={moviesList.total_pages}
-          pageRangeDisplayed={5}
-          marginPagesDisplayed={2}
-          onPageChange={onPageChange}
-          containerClassName="pagContainer"
-          pageClassName="pagItem"
-          activeClassName="activePagItem"
-          previousClassName="pagPrev"
-          nextClassName="pagNext"
-          disabledClassName="gagDisabledPrevNext"
+    moviesList && (
+      <>
+        <MovieCards moviesList={moviesList.results} page={statePage} />
+        <MoviePagination
+          count={moviesList.total_pages}
+          statePage={statePage}
+          setPage={setPage}
         />
-      )}
-    </>
+      </>
+    )
   );
 }

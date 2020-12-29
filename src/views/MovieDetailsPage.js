@@ -12,33 +12,19 @@ export default function MovieDetailsPage() {
   const { movieId } = useParams();
 
   const [movieFullInfo, setMovieFullInfo] = useState(null);
-  const [createBackPath, setCreateBackPath] = useState(null);
+  const [locationFrom] = useState(location?.state?.from?.location);
 
   useEffect(() => {
     createFetchForFullInfo(movieId).then(setMovieFullInfo);
   }, [movieId]);
 
-  useEffect(() => {
-    if (history.location.state) {
-      const { pathname, search } = history.location.state;
-      setCreateBackPath({ ...location, pathname, search });
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const createGoBack = () => {
-    if (!createBackPath) {
-      history.push('/');
-      return;
-    }
-    history.push(createBackPath);
+  const buttonGoBackHandler = () => {
+    history.push(locationFrom ?? '/');
   };
-
-  // console.log(createBackPath);
 
   return (
     <>
-      <ButtonGoBack onClick={createGoBack} />
+      <ButtonGoBack onClick={buttonGoBackHandler} />
       {movieFullInfo ? <MovieFullInfo movieFullInfo={movieFullInfo} /> : null}
       {movieFullInfo ? <AddInformation movieId={movieFullInfo.id} /> : null}
     </>

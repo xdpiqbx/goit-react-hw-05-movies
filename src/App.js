@@ -54,15 +54,18 @@ function App() {
         }
       >
         <Switch>
-          <Route exact path="/">
+          <Route path="/" exact>
             <HomePage />
           </Route>
-          <Route exact path="/movies">
+
+          <Route path="/movies" exact>
             <MoviesPage />
           </Route>
+
           <Route path="/movies/:movieId">
             <MovieDetailsPage />
           </Route>
+
           <Route>
             <HomePage />
           </Route>
