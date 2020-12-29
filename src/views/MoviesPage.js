@@ -23,13 +23,16 @@ export default function MoviesPage() {
     if (startQuery) {
       createFetchSearchByKeyword(startQuery, page).then(setFetchedMovies);
     }
+    if (!location.search) {
+      setPage(1);
+    }
     location.search = startQuery ? `page=${page ?? 1}&query=${startQuery}` : '';
     history.push({
       ...location,
     });
     // Просит location
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [startQuery, page, history]);
+  }, [startQuery, page, history, location.search]);
 
   const onSubmitHandler = query => {
     setStartQuery(query);

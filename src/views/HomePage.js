@@ -16,16 +16,16 @@ export default function HomePage() {
 
   useEffect(() => {
     createFetchForTrending(statePage).then(setMoviesList);
+    if (!location.search) {
+      setPage(1);
+    }
     location.search = `page=${statePage}`;
     history.push({
       ...location,
     });
     // Просит history и location
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [statePage, history]);
-
-  console.log('history', history);
-  console.log('location', location);
+  }, [statePage, history, location.search]);
 
   return (
     moviesList && (
