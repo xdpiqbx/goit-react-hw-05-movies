@@ -1,10 +1,18 @@
 @import 'styles/base.scss';
 
 .list {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 135px);
+  grid-gap: 10px;
   justify-content: center;
-  flex-direction: row;
-  flex-wrap: wrap;
+  grid-auto-flow: row;
+  justify-items: center;
+  @media screen and (min-width: 768px) {
+    grid-template-columns: repeat(5, 135px);
+  }
+  @media screen and (min-width: 1280px) {
+    grid-template-columns: repeat(6, 135px);
+  }
 }
 
 .listItem {
@@ -16,6 +24,7 @@
   border-radius: 4px;
   margin: 2px;
   overflow: hidden;
+  box-shadow: 0px 0px 10px -4px #000000;
   background: radial-gradient(
     circle,
     rgba(232, 232, 232, 1) 0%,
@@ -25,19 +34,29 @@
 }
 
 .image {
+  height: 200px;
+  object-fit: cover;
   width: auto;
   align-self: center;
 }
 
 .nameCharacterWrapper {
   position: absolute;
+  margin: 0;
+  padding: 0;
+  height: 60px;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  bottom: 0;
   left: 0;
-  bottom: 10px;
   width: 100%;
+  p {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+  }
 }
 
 .name,

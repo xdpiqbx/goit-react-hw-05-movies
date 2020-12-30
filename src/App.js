@@ -4,7 +4,7 @@ import ButtonUp from './components/ButtonUp';
 import Container from './components/Container';
 import Header from './components/Header';
 
-import Loader from 'react-loader-spinner';
+import LoaderInWrap from './components/LoaderInWrap';
 
 import { throttle } from 'lodash';
 
@@ -43,16 +43,7 @@ function App() {
   return (
     <Container>
       <Header />
-      <Suspense
-        fallback={
-          <Loader
-            type="RevolvingDot"
-            color="#00BFFF"
-            height={100}
-            width={100}
-          />
-        }
-      >
+      <Suspense fallback={<LoaderInWrap />}>
         <Switch>
           <Route path="/" exact>
             <HomePage />

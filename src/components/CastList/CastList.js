@@ -51,10 +51,12 @@ export default function CastList({ cast }) {
                 }
                 alt={`${name} ${character}`}
               />
-              <p className={s.nameCharacterWrapper}>
-                <b className={s.name}>{name}</b>
-                <small className={s.character}>{character}</small>
-              </p>
+              <div className={s.nameCharacterWrapper}>
+                <p>
+                  <b className={s.name}>{name}</b>
+                  <small className={s.character}>{character}</small>
+                </p>
+              </div>
             </li>
           );
         })}
